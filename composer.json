@@ -24,8 +24,7 @@
     },
     "require": {
         "php": ">=5.3.3",
-        "maximebf/debugbar": "1.*",
-        "composer/composer": "1.*"
+        "maximebf/debugbar": "1.*"
     },
     "autoload": {
         "psr-0": {
@@ -35,5 +34,8 @@
     "scripts": {
         "post-update-cmd":  "Itkg\\Debug\\Composer\\Installer::copyAssets",
         "post-install-cmd": "Itkg\\Debug\\Composer\\Installer::copyAssets"
+    },
+    "extra": {
+        "itkg_debug_asset_dir" : "../test"
     }
 }

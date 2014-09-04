@@ -15,13 +15,11 @@ class Installer
     {
         $destination = null;
         foreach($event->getComposer()->getRepositoryManager()->getLocalRepository()->getPackages() as $package){
-            if ($package instanceof ComposerPackageCompletePackage) {
-                $extra = $package->getExtra();
-                if (isset($extra[self::EXTRA_ASSET_DIR])) {
-                    $destination = $extra[self::EXTRA_ASSET_DIR];
-                }
-                break;
+            $extra = $package->getExtra();
+            if (isset($extra[self::EXTRA_ASSET_DIR])) {
+                $destination = $extra[self::EXTRA_ASSET_DIR];
             }
+            break;
         }
 
         if (null == $destination) {

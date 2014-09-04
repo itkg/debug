@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "af47f85a89fa1bda0ba48912cb4d3a63",
+    "hash": "f6c82871f2e322e360c917754ad8b137",
     "packages": [
         {
             "name": "maximebf/debugbar",
