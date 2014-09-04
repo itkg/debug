@@ -13,10 +13,11 @@ class Installer
 
     public static function copyAssets(Event $event)
     {
+        echo 'copy assets';
         $destination = null;
         foreach($event->getComposer()->getRepositoryManager()->getLocalRepository()->getPackages() as $package){
             $extra = $package->getExtra();
-            var_dump($extra);
+            var_dump('extra : ', $extra);
             if (isset($extra[self::EXTRA_ASSET_DIR])) {
                 $destination = $extra[self::EXTRA_ASSET_DIR];
             }
@@ -28,6 +29,7 @@ class Installer
         }
 
         self::copyDirectory(__DIR__.'/../Resources/*', $destination);
+        echo 'copy assets finished';
     }
 
     public static function copyDirectory($source, $destination)
