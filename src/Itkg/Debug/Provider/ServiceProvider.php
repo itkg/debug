@@ -2,9 +2,9 @@
 
 namespace Itkg\Debug\Provider;
 
+use DebugBar\StandardDebugBar;
 use Itkg\Core\Provider\ServiceProviderInterface;
 
-use Itkg\Core\ServiceContainer;
 use Itkg\Debug\DataCollector\Legacy\CacheDataCollector;
 use Itkg\Debug\DataCollector\ConfigDataCollector;
 use Itkg\Debug\DataCollector\Legacy\DatabaseDataCollector;
@@ -23,40 +23,40 @@ class ServiceProvider implements ServiceProviderInterface
      * This method should only be used to configure services and parameters.
      * It should not get services.
      *
-     * @param \Pimple $container An Container instance
+     * @param \Pimple $mainContainer An Container instance
      */
-    public function register(\Pimple $container)
+    public function register(\Pimple $mainContainer)
     {
-        $debug = new \Pimple();
-        $debug['collector.legacy.cache'] = $container->share(function() {
+        $container = new \Pimple();
+        $container['collector.legacy.cache'] = $mainContainer->share(function() {
                 return new CacheDataCollector();
             });
 
-        $debug['collector.legacy.db'] = $container->share(function() {
+        $container['collector.legacy.db'] = $mainContainer->share(function() {
                 return new DatabaseDataCollector();
             });
 
-        $debug['collector.legacy.route'] = $container->share(function() {
+        $container['collector.legacy.route'] = $mainContainer->share(function() {
                 return new RouteDataCollector();
             });
 
-        $debug['collector.config'] = $container->share(function($c) use ($container) {
+        $container['collector.config'] = $mainContainer->share(function($c) use ($mainContainer) {
 
-                return new ConfigDataCollector($container['config']);
+                return new ConfigDataCollector($mainContainer['config']);
             });
 
-        $debug['bar'] = $container->share(function($c) use ($container, $debug) {
-                $debugbar = new \DebugBar\StandardDebugBar();
-                $debugbar->addCollector($debug['collector.config']);
-                $debugbar->addCollector($debug['collector.legacy.cache']);
-                $debugbar->addCollector($debug['collector.legacy.db']);
-                $debugbar->addCollector($debug['collector.legacy.route']);
-                return $debugbar;
+        $container['bar'] = $mainContainer->share(function($c) use ($mainContainer, $container) {
+                $containerbar = new StandardDebugBar();
+                $containerbar->addCollector($container['collector.config']);
+                $containerbar->addCollector($container['collector.legacy.cache']);
+                $containerbar->addCollector($container['collector.legacy.db']);
+                $containerbar->addCollector($container['collector.legacy.route']);
+                return $containerbar;
             });
 
-        $debug['renderer'] = $container->share(function($c) use ($debug) {
-            return $debug['bar']->getJavascriptRenderer();
+        $container['renderer'] = $mainContainer->share(function($c) use ($container) {
+            return $container['bar']->getJavascriptRenderer();
         });
-        $container['debug'] = $debug;
+        $mainContainer['debug'] = $container;
     }
 }
