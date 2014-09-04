@@ -24,18 +24,12 @@
     },
     "require": {
         "php": ">=5.3.3",
+        "itkg/core": "dev-master",
         "maximebf/debugbar": "1.*"
     },
     "autoload": {
         "psr-0": {
             "Itkg\\Debug": "src"
         }
-    },
-    "scripts": {
-        "post-update-cmd":  "Itkg\\Debug\\Composer\\Installer::copyAssets",
-        "post-install-cmd": "Itkg\\Debug\\Composer\\Installer::copyAssets"
-    },
-    "extra": {
-        "itkg_debug_asset_dir" : "../test"
     }
 }
