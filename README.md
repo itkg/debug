@@ -14,7 +14,7 @@ Debug library with custom debug bar
 
 If you use composer, add itkg/debug as a dependency to the composer.json of your application
 
-```php
+```json
     "require": {
         ...
         "itkg/debug": "dev-master"
@@ -25,7 +25,7 @@ If you use composer, add itkg/debug as a dependency to the composer.json of your
 
 To install assets in your web directory with composer, you can add this lines :
 
-```php
+```json
     "extra": {
         "itkg_debug_asset_dir": "path/to/your/web/directory"
     },
