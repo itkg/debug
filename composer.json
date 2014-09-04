@@ -24,14 +24,12 @@
     },
     "require": {
         "php": ">=5.3.3",
+        "itkg/core": "dev-master",
         "maximebf/debugbar": "1.*"
     },
     "autoload": {
         "psr-0": {
             "Itkg\\Debug": "src"
         }
-    },
-    "extra": {
-        "itkg_debug_asset_dir" : "../test"
     }
 }
