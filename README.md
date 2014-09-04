@@ -1,5 +1,10 @@
-debug
-=====
+Itkg Debug library
+==================
+
+[![Build Status](https://travis-ci.org/itkg/debug.svg?branch=master)](https://travis-ci.org/itkg/debug)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/itkg/debug/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/itkg/debug/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/itkg/debug/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/itkg/debug/?branch=master)
+
 
 Debug library with custom debug bar
 
