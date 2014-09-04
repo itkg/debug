@@ -1,11 +1,11 @@
 <?php
 
-namespace Itkg\Debug\DataCollector\Legacy;
+namespace Itkg\Debug\DataCollector;
 
 
 use DebugBar\DataCollector\DataCollector;
 use DebugBar\DataCollector\Renderable;
-use Itkg\Debug\Event\Legacy\DatabaseEvent;
+use Itkg\Debug\Event\DatabaseEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class DatabaseDataCollector extends DataCollector implements EventSubscriberInterface, Renderable
@@ -29,7 +29,7 @@ class DatabaseDataCollector extends DataCollector implements EventSubscriberInte
      */
     function getName()
     {
-        return 'legacy_db';
+        return 'database';
     }
 
     /**
@@ -55,7 +55,7 @@ class DatabaseDataCollector extends DataCollector implements EventSubscriberInte
     public static function getSubscribedEvents()
     {
         return array(
-            'pelican.db.post_execute' => 'onPostQueryExecute'
+            'db.post_execute' => 'onPostQueryExecute'
         );
     }
 
@@ -78,10 +78,10 @@ class DatabaseDataCollector extends DataCollector implements EventSubscriberInte
     function getWidgets()
     {
         return array(
-            "legacy_db" => array(
+            "database" => array(
                 "icon" => "tags",
                 "widget" => "PhpDebugBar.Widgets.VariableListWidget",
-                "map" => "legacy_db",
+                "map" => "database",
                 "default" => "{}"
             )
         );

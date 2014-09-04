@@ -1,6 +1,6 @@
 <?php
 
-namespace Itkg\Debug\Event\Legacy;
+namespace Itkg\Debug\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 
@@ -9,7 +9,7 @@ class RouteEvent extends Event
     const ROUTE_MATCH = 'route.match';
 
     /**
-     * @var \Pelican_Route
+     * @var $mixed
      */
     private $route;
 
@@ -21,9 +21,10 @@ class RouteEvent extends Event
     /**
      * Constructor
      *
-     * @param \Pelican_Route $route
+     * @param mixed $route
+     * @param array $params
      */
-    public function __construct(\Pelican_Request_Route_Abstract $route, array $params = array())
+    public function __construct($route, array $params = array())
     {
         $this->route = $route;
         $this->params = $params;
@@ -31,7 +32,7 @@ class RouteEvent extends Event
 
     /**
      * Get route
-     * @return \Pelican_Route
+     * @return $mixed
      */
     public function getRoute()
     {
@@ -47,4 +48,4 @@ class RouteEvent extends Event
     {
         return $this->params;
     }
-} 
+}

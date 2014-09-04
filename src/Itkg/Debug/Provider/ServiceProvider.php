@@ -5,10 +5,10 @@ namespace Itkg\Debug\Provider;
 use DebugBar\StandardDebugBar;
 use Itkg\Core\Provider\ServiceProviderInterface;
 
-use Itkg\Debug\DataCollector\Legacy\CacheDataCollector;
+use Itkg\Debug\DataCollector\CacheDataCollector;
 use Itkg\Debug\DataCollector\ConfigDataCollector;
-use Itkg\Debug\DataCollector\Legacy\DatabaseDataCollector;
-use Itkg\Debug\DataCollector\Legacy\RouteDataCollector;
+use Itkg\Debug\DataCollector\DatabaseDataCollector;
+use Itkg\Debug\DataCollector\RouteDataCollector;
 use Pimple;
 
 /**
@@ -28,15 +28,15 @@ class ServiceProvider implements ServiceProviderInterface
     public function register(\Pimple $mainContainer)
     {
         $container = new \Pimple();
-        $container['collector.legacy.cache'] = $mainContainer->share(function() {
+        $container['collector.cache'] = $mainContainer->share(function() {
                 return new CacheDataCollector();
             });
 
-        $container['collector.legacy.db'] = $mainContainer->share(function() {
+        $container['collector.db'] = $mainContainer->share(function() {
                 return new DatabaseDataCollector();
             });
 
-        $container['collector.legacy.route'] = $mainContainer->share(function() {
+        $container['collector.route'] = $mainContainer->share(function() {
                 return new RouteDataCollector();
             });
 
@@ -47,10 +47,12 @@ class ServiceProvider implements ServiceProviderInterface
 
         $container['bar'] = $mainContainer->share(function($c) use ($mainContainer, $container) {
                 $containerbar = new StandardDebugBar();
+
+                // Defaults collectors
                 $containerbar->addCollector($container['collector.config']);
-                $containerbar->addCollector($container['collector.legacy.cache']);
-                $containerbar->addCollector($container['collector.legacy.db']);
-                $containerbar->addCollector($container['collector.legacy.route']);
+                $containerbar->addCollector($container['collector.cache']);
+                $containerbar->addCollector($container['collector.db']);
+                $containerbar->addCollector($container['collector.route']);
                 return $containerbar;
             });
 

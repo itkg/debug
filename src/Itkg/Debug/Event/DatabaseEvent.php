@@ -1,6 +1,6 @@
 <?php
 
-namespace Itkg\Debug\Event\Legacy;
+namespace Itkg\Debug\Event;
 
 
 use Symfony\Component\EventDispatcher\Event;
@@ -25,4 +25,4 @@ class DatabaseEvent extends Event
     {
         return $this->data;
     }
-} 
+}

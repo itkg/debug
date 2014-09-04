@@ -1,6 +1,6 @@
 <?php
 
-namespace Itkg\Debug\DataCollector\Legacy;
+namespace Itkg\Debug\DataCollector;
 
 use DebugBar\DataCollector\DataCollector;
 use DebugBar\DataCollector\Renderable;
@@ -89,7 +89,7 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
      */
     public function getName()
     {
-        return 'legacy_cache';
+        return 'cache';
     }
 
     /**
@@ -147,10 +147,10 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
     function getWidgets()
     {
         return array(
-            "legacy_cache" => array(
+            "cache" => array(
                 "icon" => "tags",
                 "widget" => "PhpDebugBar.Widgets.VariableListWidget",
-                "map" => "legacy_cache",
+                "map" => "cache",
                 "default" => "{}"
             )
         );

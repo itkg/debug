@@ -1,10 +1,10 @@
 <?php
 
-namespace Itkg\Debug\DataCollector\Legacy;
+namespace Itkg\Debug\DataCollector;
 
 use DebugBar\DataCollector\DataCollector;
 use DebugBar\DataCollector\Renderable;
-use Itkg\Debug\Event\Legacy\RouteEvent;
+use Itkg\Debug\Event\RouteEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class RouteDataCollector extends DataCollector implements EventSubscriberInterface, Renderable
@@ -54,7 +54,7 @@ class RouteDataCollector extends DataCollector implements EventSubscriberInterfa
      */
     public function getName()
     {
-        return 'legacy_route';
+        return 'route';
     }
 
     /**
@@ -79,10 +79,10 @@ class RouteDataCollector extends DataCollector implements EventSubscriberInterfa
     function getWidgets()
     {
         return array(
-            "legacy_route" => array(
+            "route" => array(
                 "icon" => "tags",
                 "widget" => "PhpDebugBar.Widgets.VariableListWidget",
-                "map" => "legacy_route",
+                "map" => "route",
                 "default" => "{}"
             )
         );
