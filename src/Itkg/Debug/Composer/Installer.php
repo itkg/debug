@@ -16,6 +16,7 @@ class Installer
         $destination = null;
         foreach($event->getComposer()->getRepositoryManager()->getLocalRepository()->getPackages() as $package){
             $extra = $package->getExtra();
+            var_dump($extra);
             if (isset($extra[self::EXTRA_ASSET_DIR])) {
                 $destination = $extra[self::EXTRA_ASSET_DIR];
             }
@@ -26,7 +27,7 @@ class Installer
             return;
         }
 
-        self::copyDirectory(__DIR__.'/../Resources/assets', $destination);
+        self::copyDirectory(__DIR__.'/../Resources/*', $destination);
     }
 
     public static function copyDirectory($source, $destination)
