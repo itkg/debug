@@ -1,0 +1,39 @@
+{
+    "name":         "itkg/debug",
+    "type":         "library",
+    "description":  "Itkg debug library",
+    "keywords":     ["library", "debug", "interakting"],
+    "homepage":     "http://github.com/itkg/debug",
+    "license":      "MIT",
+    "authors":      [
+        {
+            "name":  "Interakting",
+            "email": "itkg@interakting.com"
+        },
+        {
+            "name":  "Pascal DENIS",
+            "email": "pascal.denis@businessdecision.com"
+        },
+        {
+            "name":  "Mathieu DUPLOUY",
+            "email": "mathieu.duplouy@businessdecision.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "maximebf/debugbar": "1.*",
+        "composer/composer": "1.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Itkg\\Debug": "src"
+        }
+    },
+    "scripts": {
+        "post-update-cmd":  "Itkg\\Debug\\Composer\\Installer::copyAssets",
+        "post-install-cmd": "Itkg\\Debug\\Composer\\Installer::copyAssets"
+    }
+}
