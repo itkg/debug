@@ -32,7 +32,7 @@ class RouteEvent extends Event
 
     /**
      * Get route
-     * @return $mixed
+     * @return mixed
      */
     public function getRoute()
     {
