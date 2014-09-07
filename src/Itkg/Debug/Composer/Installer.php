@@ -41,26 +41,22 @@ class Installer
      */
     public static function copyDirectory($source, $destination)
     {
-        if (is_dir($source)) {
-            if (!is_dir($destination)) {
-                mkdir($destination, 0777, true);
-            }
-            $directory = dir($source);
-            while (false !== ( $readdirectory = $directory->read())) {
-                if ( $readdirectory == '.' || $readdirectory == '..' ) {
-                    continue;
-                }
-                $PathDir = $source . '/' . $readdirectory;
-                if (is_dir( $PathDir)) {
-                    self::copyDirectory($PathDir, $destination . '/' . $readdirectory);
-                    continue;
-                }
-                copy($PathDir, $destination . '/' . $readdirectory);
-            }
-
-            $directory->close();
-        }else {
-            copy($source, $destination);
+        if (!is_dir($destination)) {
+            mkdir($destination, 0777, true);
         }
+        $directory = dir($source);
+        while (false !== ( $readdirectory = $directory->read())) {
+            if ( $readdirectory == '.' || $readdirectory == '..' ) {
+                continue;
+            }
+            $PathDir = $source . '/' . $readdirectory;
+            if (is_dir( $PathDir)) {
+                self::copyDirectory($PathDir, $destination . '/' . $readdirectory);
+                continue;
+            }
+            copy($PathDir, $destination . '/' . $readdirectory);
+        }
+
+        $directory->close();
     }
 }

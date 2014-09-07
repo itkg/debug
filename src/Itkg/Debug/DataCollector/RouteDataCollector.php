@@ -7,6 +7,10 @@ use DebugBar\DataCollector\Renderable;
 use Itkg\Debug\Event\RouteEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
+/**
+ * Class RouteDataCollector
+ * @package Itkg\Debug\DataCollector
+ */
 class RouteDataCollector extends DataCollector implements EventSubscriberInterface, Renderable
 {
     /**
@@ -70,6 +74,7 @@ class RouteDataCollector extends DataCollector implements EventSubscriberInterfa
             )
         );
     }
+
     /**
      * Returns a hash where keys are control names and their values
      * an array of options as defined in {@see DebugBar\JavascriptRenderer::addControl()}

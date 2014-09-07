@@ -46,15 +46,16 @@ class ServiceProvider implements ServiceProviderInterface
             });
 
         $container['bar'] = $mainContainer->share(function($c) use ($mainContainer, $container) {
-                $containerbar = new StandardDebugBar();
+            $bar = new StandardDebugBar();
 
                 // Defaults collectors
-                $containerbar->addCollector($container['collector.config']);
-                $containerbar->addCollector($container['collector.cache']);
-                $containerbar->addCollector($container['collector.db']);
-                $containerbar->addCollector($container['collector.route']);
-                return $containerbar;
-            });
+            $bar->addCollector($container['collector.config']);
+            $bar->addCollector($container['collector.cache']);
+            $bar->addCollector($container['collector.db']);
+            $bar->addCollector($container['collector.route']);
+
+            return $bar;
+        });
 
         $container['renderer'] = $mainContainer->share(function($c) use ($container) {
             return $container['bar']->getJavascriptRenderer();

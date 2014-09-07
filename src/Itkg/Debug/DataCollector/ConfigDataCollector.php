@@ -6,6 +6,11 @@ use DebugBar\DataCollector\DataCollector;
 use DebugBar\DataCollector\Renderable;
 use Itkg\Core\ConfigInterface;
 
+/**
+ * Class ConfigDataCollector
+ *
+ * @package Itkg\Debug\DataCollector
+ */
 class ConfigDataCollector extends DataCollector implements Renderable
 {
 

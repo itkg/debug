@@ -8,6 +8,10 @@ use DebugBar\DataCollector\Renderable;
 use Itkg\Debug\Event\DatabaseEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
+/**
+ * Class DatabaseDataCollector
+ * @package Itkg\Debug\DataCollector
+ */
 class DatabaseDataCollector extends DataCollector implements EventSubscriberInterface, Renderable
 {
     protected static $data = array();
