@@ -17,6 +17,26 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
     protected static $data = array();
 
     /**
+     * @var int
+     */
+    protected static $loadCount = 0;
+
+    /**
+     * @var int
+     */
+    protected static $setCount = 0;
+
+    /**
+     * @var int
+     */
+    protected static $removeCount = 0;
+
+    /**
+     * @var int
+     */
+    protected static $totalSize = 0;
+
+    /**
      * Returns the events to which this class has subscribed.
      *
      * Return format:
@@ -48,44 +68,37 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
     {
         $collectedData = array();
 
-        $collectedData['general'] = array();
-        $loadCount   = 0;
-        $setCount    = 0;
-        $removeCount = 0;
-        $totalSize   = 0;
-        
         foreach(self::$data as $key => $values) {
-            $load   = (isset($values['load'])) ? $values['load'] : 0;
-            $set    = (isset($values['set'])) ? $values['set'] : 0;
-            $remove = (isset($values['remove'])) ? $values['remove'] : 0;
-            $size   = (isset($values['size'])) ? $values['size'] : 0;
-
             $collectedData[$key] = $this->getDataFormatter()->formatVar(
                 array(
                     'name'   => $key,
-                    'load'   => $load,
-                    'set'    => $set,
-                    'remove' => $remove,
-                    'size'   => $size
+                    'load'   => (isset($values['load'])) ? $values['load'] : 0,
+                    'set'    => (isset($values['set'])) ? $values['set'] : 0,
+                    'remove' => (isset($values['remove'])) ? $values['remove'] : 0,
+                    'size'   => (isset($values['size'])) ? $values['size'] : 0
                 )
             );
-            $loadCount   += $load;
-            $setCount    += $set;
-            $removeCount += $remove;
-            $totalSize   += $size;
         }
 
-        $collectedData['general'] = $this->getDataFormatter()->formatVar(
-            array(
-                'Cache count'  => sizeof($collectedData) - 1,
-                'Cache load'   => $loadCount,
-                'Cache remove' => $removeCount,
-                'Cache set'    => $setCount,
-                'Cache size (bytes) ' => $totalSize
-            )
-        );
+        $collectedData['general'] = $this->getGeneralData();
 
         return $collectedData;
+    }
+
+    /**
+     * @return string
+     */
+    private function getGeneralData()
+    {
+        return $this->getDataFormatter()->formatVar(
+            array(
+                'Cache count'         => sizeof($collectedData) - 1,
+                'Cache load'          => self::$loadCount,
+                'Cache remove'        => self::$removeCount,
+                'Cache set'           => self::$setCount,
+                'Cache size (bytes) ' => self::$totalSize
+            )
+        );
     }
 
     /**
@@ -112,6 +125,8 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
         }
 
         self::$data[$event->getKey()]['size'] = $event->getSize();
+        self::$loadCount++;
+        self::$totalSize += $event->getSize();
     }
 
     /**
@@ -128,6 +143,8 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
         }
 
         self::$data[$event->getKey()]['size'] = $event->getSize();
+        self::$setCount++;
+        self::$totalSize += $event->getSize();
     }
 
     /**
@@ -142,6 +159,8 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
         } else {
             self::$data[$event->getKey()]['remove'] = 1;
         }
+
+        self::$removeCount++;
     }
 
     /**

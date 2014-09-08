@@ -1,5 +1,7 @@
 <?php
 
+namespace Itkg\Tests\Debug\Event;
+
 /**
  * Class RouteEventTest
  */

@@ -1,9 +1,11 @@
 <?php
 
+namespace Itkg\Tests\Debug\Event;
+
 /**
  * Class DatabaseEventTest
  */
-class DatabaseEventTest  extends \PHPUnit_Framework_TestCase
+class DatabaseEventTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * 
