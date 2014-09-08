@@ -4,7 +4,7 @@ namespace Itkg\Debug\DataCollector;
 
 use DebugBar\DataCollector\DataCollector;
 use DebugBar\DataCollector\Renderable;
-use Itkg\Cache\Event\CacheEvent;
+use Itkg\Core\Cache\Event\CacheEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class CacheDataCollector extends DataCollector implements EventSubscriberInterface, Renderable
