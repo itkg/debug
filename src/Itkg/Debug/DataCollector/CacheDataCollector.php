@@ -80,7 +80,7 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
             );
         }
 
-        $collectedData['general'] = $this->getGeneralData();
+        $collectedData['general'] = $this->getGeneralData($collectedData);
 
         return $collectedData;
     }
@@ -88,11 +88,11 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
     /**
      * @return string
      */
-    private function getGeneralData()
+    private function getGeneralData(array $collectedData = array())
     {
         return $this->getDataFormatter()->formatVar(
             array(
-                'Cache count'         => sizeof($collectedData) - 1,
+                'Cache count'         => sizeof($collectedData),
                 'Cache load'          => self::$loadCount,
                 'Cache remove'        => self::$removeCount,
                 'Cache set'           => self::$setCount,

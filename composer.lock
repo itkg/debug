@@ -1,8 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
-        "This file is @generated automatically"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
     "hash": "72611c75c3498a492094a6cbbbac67cb",
     "packages": [
@@ -487,12 +486,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/itkg/core.git",
-                "reference": "815557ada8e0baf43b76df405e8b8a62b1ce35de"
+                "reference": "1788dc62f066852f3f96236109ccdd4634a83def"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itkg/core/zipball/815557ada8e0baf43b76df405e8b8a62b1ce35de",
-                "reference": "815557ada8e0baf43b76df405e8b8a62b1ce35de",
+                "url": "https://api.github.com/repos/itkg/core/zipball/1788dc62f066852f3f96236109ccdd4634a83def",
+                "reference": "1788dc62f066852f3f96236109ccdd4634a83def",
                 "shasum": ""
             },
             "require": {
@@ -540,7 +539,7 @@
                 "interakting",
                 "library"
             ],
-            "time": "2014-09-05 14:31:56"
+            "time": "2014-09-08 15:01:51"
         },
         {
             "name": "maximebf/debugbar",
@@ -1370,7 +1369,9 @@
             "time": "2013-01-13 10:24:48"
         }
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "minimum-stability": "stable",
     "stability-flags": {
         "itkg/core": 20
@@ -1378,5 +1379,7 @@
     "platform": {
         "php": ">=5.3.3"
     },
-    "platform-dev": []
+    "platform-dev": [
+
+    ]
 }

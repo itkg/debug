@@ -2,6 +2,7 @@
 
 namespace Itkg\Tests\Debug\DataCollector;
 
+use DebugBar\DataFormatter\DataFormatter;
 use Itkg\Core\Cache\Event\CacheEvent;
 use Itkg\Debug\DataCollector\CacheDataCollector;
 
@@ -32,5 +33,48 @@ class CacheDataCollectorTest extends \PHPUnit_Framework_TestCase
 
         // Test double remove same cache
         $collector->onCacheRemove($removeCacheEvent);
+
+        $dataFormatter = new DataFormatter();
+
+        $result = array(
+            'general' => $dataFormatter->formatVar(
+                array(
+                    'Cache count'         => 3,
+                    'Cache load'          => 2,
+                    'Cache remove'        => 2,
+                    'Cache set'           => 2,
+                    'Cache size (bytes) ' => 16
+                )
+            ),
+            'my_cache_key' => $dataFormatter->formatVar(
+                array(
+                    'name'   => 'my_cache_key',
+                    'load'   => 2,
+                    'set'    => 0,
+                    'remove' => 0,
+                    'size'   => 4
+                )
+            ),
+            'my_cache_key_remove' => $dataFormatter->formatVar(
+                array(
+                    'name'   => 'my_cache_key_remove',
+                    'load'   => 0,
+                    'set'    => 0,
+                    'remove' => 2,
+                    'size'   => 0
+                )
+            ),
+            'my_cache_key_set'  => $dataFormatter->formatVar(
+                array(
+                    'name'   => 'my_cache_key_set',
+                    'load'   => 0,
+                    'set'    => 2,
+                    'remove' => 0,
+                    'size'   => 4
+                )
+            )
+        );
+
+        $this->assertEquals($result, $collector->collect());
     }
 } 
