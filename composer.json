@@ -25,7 +25,8 @@
     "require": {
         "php": ">=5.3.3",
         "itkg/core": "dev-master",
-        "maximebf/debugbar": "1.*"
+        "maximebf/debugbar": "1.*",
+        "symfony/filesystem": "~2.3"
     },
     "autoload": {
         "psr-0": {
