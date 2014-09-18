@@ -30,7 +30,7 @@ class DatabaseEvent extends Event
     public function __construct($query, array $data = array())
     {
         $this->query = $query;
-        $this->data  = $data;
+        $this->data = $data;
     }
 
     /**

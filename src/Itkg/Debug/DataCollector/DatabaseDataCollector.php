@@ -68,7 +68,7 @@ class DatabaseDataCollector extends DataCollector implements EventSubscriberInte
         self::$data[] = $this->getDataFormatter()->formatVar(
             array(
                 'query' => $event->getQuery(),
-                'data'  => $event->getData()
+                'data' => $event->getData()
             )
         );
     }
@@ -79,7 +79,7 @@ class DatabaseDataCollector extends DataCollector implements EventSubscriberInte
      *
      * @return array
      */
-    function getWidgets()
+    public function getWidgets()
     {
         return array(
             "database" => array(

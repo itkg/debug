@@ -77,4 +77,15 @@ class CacheDataCollectorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($result, $collector->collect());
     }
-} 
+
+    public function testWidgets()
+    {
+        $collector = new CacheDataCollector();
+        $name = $collector->getName();
+        $widgets = $collector->getWidgets();
+
+        $this->assertArrayHasKey($name, $widgets);
+        $this->assertEquals($name, $widgets[$name]['map']);
+
+    }
+}

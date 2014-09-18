@@ -40,4 +40,15 @@ class DatabaseDataCollectorTest extends \PHPUnit_Framework_TestCase
             $dbcollector->collect()
         );
     }
+
+    public function testWidgets()
+    {
+        $collector = new DatabaseDataCollector();
+        $name = $collector->getName();
+        $widgets = $collector->getWidgets();
+
+        $this->assertArrayHasKey($name, $widgets);
+        $this->assertEquals($name, $widgets[$name]['map']);
+
+    }
 } 

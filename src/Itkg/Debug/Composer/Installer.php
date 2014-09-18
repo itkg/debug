@@ -30,9 +30,9 @@ class Installer
 
         $fs = new Filesystem();
         $fs->mirror(
-            $vendorDir.'/maximebf/debugbar/src/DebugBar/Resources',
+            $vendorDir . '/maximebf/debugbar/src/DebugBar/Resources',
             //
-            $extra[self::EXTRA_ASSET_DIR].'/vendor/maximebf/debugbar/src/DebugBar/Resources'
+            $extra[self::EXTRA_ASSET_DIR] . '/vendor/maximebf/debugbar/src/DebugBar/Resources'
         );
     }
 }

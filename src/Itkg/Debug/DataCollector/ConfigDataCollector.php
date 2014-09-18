@@ -36,7 +36,7 @@ class ConfigDataCollector extends DataCollector implements Renderable
      */
     public function collect()
     {
-        $config =  (array) $this->config->all();
+        $config = (array)$this->config->all();
         ksort($config);
 
         $data = array();
@@ -63,7 +63,7 @@ class ConfigDataCollector extends DataCollector implements Renderable
      *
      * @return array
      */
-    function getWidgets()
+    public function getWidgets()
     {
         return array(
             "config" => array(

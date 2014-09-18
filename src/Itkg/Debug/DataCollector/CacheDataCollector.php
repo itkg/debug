@@ -54,7 +54,7 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
     {
         return array(
             'cache.load' => 'onCacheLoad',
-            'cache.set'  => 'onCacheSet',
+            'cache.set' => 'onCacheSet',
             'cache.remove' => 'onCacheRemove'
         );
     }
@@ -68,14 +68,14 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
     {
         $collectedData = array();
 
-        foreach(self::$data as $key => $values) {
+        foreach (self::$data as $key => $values) {
             $collectedData[$key] = $this->getDataFormatter()->formatVar(
                 array(
-                    'name'   => $key,
-                    'load'   => (isset($values['load'])) ? $values['load'] : 0,
-                    'set'    => (isset($values['set'])) ? $values['set'] : 0,
+                    'name' => $key,
+                    'load' => (isset($values['load'])) ? $values['load'] : 0,
+                    'set' => (isset($values['set'])) ? $values['set'] : 0,
                     'remove' => (isset($values['remove'])) ? $values['remove'] : 0,
-                    'size'   => (isset($values['size'])) ? $values['size'] : 0
+                    'size' => (isset($values['size'])) ? $values['size'] : 0
                 )
             );
         }
@@ -86,16 +86,17 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
     }
 
     /**
+     * @param array $collectedData
      * @return string
      */
     private function getGeneralData(array $collectedData = array())
     {
         return $this->getDataFormatter()->formatVar(
             array(
-                'Cache count'         => sizeof($collectedData),
-                'Cache load'          => self::$loadCount,
-                'Cache remove'        => self::$removeCount,
-                'Cache set'           => self::$setCount,
+                'Cache count' => sizeof($collectedData),
+                'Cache load' => self::$loadCount,
+                'Cache remove' => self::$removeCount,
+                'Cache set' => self::$setCount,
                 'Cache size (bytes) ' => self::$totalSize
             )
         );
@@ -119,7 +120,7 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
     public function onCacheLoad(CacheEvent $event)
     {
         if (isset(self::$data[$event->getKey()]['load'])) {
-            self::$data[$event->getKey()]['load'] ++;
+            self::$data[$event->getKey()]['load']++;
         } else {
             self::$data[$event->getKey()]['load'] = 1;
         }
@@ -137,7 +138,7 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
     public function onCacheSet(CacheEvent $event)
     {
         if (isset(self::$data[$event->getKey()]['set'])) {
-            self::$data[$event->getKey()]['set'] ++;
+            self::$data[$event->getKey()]['set']++;
         } else {
             self::$data[$event->getKey()]['set'] = 1;
         }
@@ -155,7 +156,7 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
     public function onCacheRemove(CacheEvent $event)
     {
         if (isset(self::$data[$event->getKey()]['remove'])) {
-            self::$data[$event->getKey()]['remove'] ++;
+            self::$data[$event->getKey()]['remove']++;
         } else {
             self::$data[$event->getKey()]['remove'] = 1;
         }
@@ -169,7 +170,7 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
      *
      * @return array
      */
-    function getWidgets()
+    public function getWidgets()
     {
         return array(
             "cache" => array(

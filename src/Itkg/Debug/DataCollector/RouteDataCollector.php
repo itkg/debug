@@ -81,7 +81,7 @@ class RouteDataCollector extends DataCollector implements EventSubscriberInterfa
      *
      * @return array
      */
-    function getWidgets()
+    public function getWidgets()
     {
         return array(
             "route" => array(

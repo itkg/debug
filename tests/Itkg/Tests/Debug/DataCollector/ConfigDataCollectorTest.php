@@ -32,4 +32,15 @@ class ConfigDataCollectorTest extends \PHPUnit_Framework_TestCase
             $configDataCollector->collect()
         );
     }
+
+    public function testWidgets()
+    {
+        $collector = new ConfigDataCollector(new Config());
+        $name = $collector->getName();
+        $widgets = $collector->getWidgets();
+
+        $this->assertArrayHasKey($name, $widgets);
+        $this->assertEquals($name, $widgets[$name]['map']);
+
+    }
 } 
