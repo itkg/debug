@@ -39,12 +39,12 @@ class ServiceProvider implements ServiceProviderInterface
             return new RouteDataCollector();
         });
 
-        $container['collector.config'] = $mainContainer->share(function ($c) use ($mainContainer) {
+        $container['collector.config'] = $mainContainer->share(function () use ($mainContainer) {
 
             return new ConfigDataCollector($mainContainer['config']);
         });
 
-        $container['bar'] = $mainContainer->share(function ($c) use ($mainContainer, $container) {
+        $container['bar'] = $mainContainer->share(function () use ($mainContainer, $container) {
             $bar = new StandardDebugBar();
 
             // Defaults collectors
@@ -56,7 +56,7 @@ class ServiceProvider implements ServiceProviderInterface
             return $bar;
         });
 
-        $container['renderer'] = $mainContainer->share(function ($c) use ($container) {
+        $container['renderer'] = $mainContainer->share(function () use ($container) {
             return $container['bar']->getJavascriptRenderer();
         });
         $mainContainer['debug'] = $container;
