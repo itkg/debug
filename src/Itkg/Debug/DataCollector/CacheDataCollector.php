@@ -69,20 +69,32 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
         $collectedData = array();
 
         foreach (self::$data as $key => $values) {
-            $collectedData[$key] = $this->getDataFormatter()->formatVar(
-                array(
-                    'name' => $key,
-                    'load' => (isset($values['load'])) ? $values['load'] : 0,
-                    'set' => (isset($values['set'])) ? $values['set'] : 0,
-                    'remove' => (isset($values['remove'])) ? $values['remove'] : 0,
-                    'size' => (isset($values['size'])) ? $values['size'] : 0
-                )
-            );
+            $collectedData[$key] = $this->formatValues($key, $values);
         }
 
         $collectedData['general'] = $this->getGeneralData($collectedData);
 
         return $collectedData;
+    }
+
+    /**
+     * Format values
+     *
+     * @param $key
+     * @param array $values
+     * @return string
+     */
+    private function formatValues($key, array $values)
+    {
+        return $this->getDataFormatter()->formatVar(
+            array(
+                'name'   => $key,
+                'load'   => (isset($values['load'])) ? $values['load'] : 0,
+                'set'    => (isset($values['set'])) ? $values['set'] : 0,
+                'remove' => (isset($values['remove'])) ? $values['remove'] : 0,
+                'size'   => (isset($values['size'])) ? $values['size'] : 0
+            )
+        );
     }
 
     /**
