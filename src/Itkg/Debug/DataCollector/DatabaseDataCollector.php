@@ -5,7 +5,7 @@ namespace Itkg\Debug\DataCollector;
 
 use DebugBar\DataCollector\DataCollector;
 use DebugBar\DataCollector\Renderable;
-use Itkg\Debug\Event\DatabaseEvent;
+use Itkg\Core\Event\DatabaseEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
