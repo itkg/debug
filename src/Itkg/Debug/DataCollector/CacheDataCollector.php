@@ -131,14 +131,14 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
      */
     public function onCacheLoad(CacheEvent $event)
     {
-        $key = $event->getCachabledata()->getHashKey();
+        $key = $event->getCacheabledata()->getHashKey();
         if (isset(self::$data[$key]['load'])) {
             self::$data[$key]['load']++;
         } else {
             self::$data[$key]['load'] = 1;
         }
 
-        $size = strlen($event->getCachabledata()->getDataForCache());
+        $size = strlen($event->getCacheabledata()->getDataForCache());
         self::$totalSize += self::$data[$key]['size'] = $size;
         self::$loadCount++;
     }
@@ -150,14 +150,14 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
      */
     public function onCacheSet(CacheEvent $event)
     {
-        $key = $event->getCachabledata()->getHashKey();
+        $key = $event->getCacheabledata()->getHashKey();
         if (isset(self::$data[$key]['set'])) {
             self::$data[$key]['set']++;
         } else {
             self::$data[$key]['set'] = 1;
         }
 
-        $size = strlen($event->getCachabledata()->getDataForCache());
+        $size = strlen($event->getCacheabledata()->getDataForCache());
         self::$totalSize += self::$data[$key]['size'] = $size;
         self::$setCount++;
     }
@@ -169,7 +169,7 @@ class CacheDataCollector extends DataCollector implements EventSubscriberInterfa
      */
     public function onCacheRemove(CacheEvent $event)
     {
-        $key = $event->getCachabledata()->getHashKey();
+        $key = $event->getCacheabledata()->getHashKey();
         if (isset(self::$data[$key]['remove'])) {
             self::$data[$key]['remove']++;
         } else {

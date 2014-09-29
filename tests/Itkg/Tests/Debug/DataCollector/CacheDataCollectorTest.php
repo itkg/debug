@@ -3,7 +3,7 @@
 namespace Itkg\Tests\Debug\DataCollector;
 
 use DebugBar\DataFormatter\DataFormatter;
-use Itkg\Core\Cache\CachableData;
+use Itkg\Core\Cache\CacheableData;
 use Itkg\Core\Cache\Event\CacheEvent;
 use Itkg\Debug\DataCollector\CacheDataCollector;
 
@@ -14,9 +14,9 @@ class CacheDataCollectorTest extends \PHPUnit_Framework_TestCase
 {
     public function testCollect()
     {
-        $loadCacheEvent = new CacheEvent(new CachableData('my_cache_key', 86400, 'test'));
-        $removeCacheEvent = new CacheEvent(new CachableData('my_cache_key_remove', 86400, 'other test'));
-        $setCacheEvent = new CacheEvent(new CachableData('my_cache_key_set', 86400, 'test'));
+        $loadCacheEvent = new CacheEvent(new CacheableData('my_cache_key', 86400, 'test'));
+        $removeCacheEvent = new CacheEvent(new CacheableData('my_cache_key_remove', 86400, 'other test'));
+        $setCacheEvent = new CacheEvent(new CacheableData('my_cache_key_set', 86400, 'test'));
 
         $collector = new CacheDataCollector();
 

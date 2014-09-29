@@ -476,12 +476,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/itkg/core.git",
-                "reference": "84938234d2361c3880512358678aaaff6d0b4e3b"
+                "reference": "52f641cf3fa113e60c83dd3bde55f9142c703212"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itkg/core/zipball/84938234d2361c3880512358678aaaff6d0b4e3b",
-                "reference": "84938234d2361c3880512358678aaaff6d0b4e3b",
+                "url": "https://api.github.com/repos/itkg/core/zipball/52f641cf3fa113e60c83dd3bde55f9142c703212",
+                "reference": "52f641cf3fa113e60c83dd3bde55f9142c703212",
                 "shasum": ""
             },
             "require": {
@@ -529,7 +529,7 @@
                 "interakting",
                 "library"
             ],
-            "time": "2014-09-29 09:22:30"
+            "time": "2014-09-29 09:51:52"
         },
         {
             "name": "maximebf/debugbar",
