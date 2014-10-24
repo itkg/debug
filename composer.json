@@ -24,7 +24,7 @@
     },
     "require": {
         "php": ">=5.3.3",
-        "itkg/core": "dev-master",
+        "itkg/core": "~1",
         "maximebf/debugbar": "1.*",
         "symfony/filesystem": "~2.3"
     },
